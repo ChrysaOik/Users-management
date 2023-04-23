@@ -2,6 +2,8 @@ package com.agileproject.userscrud.entity;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name="user")
 public class User {
@@ -20,8 +22,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String firstName, String lastName, String email) {
-        this.id = id;
+    public User( String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
