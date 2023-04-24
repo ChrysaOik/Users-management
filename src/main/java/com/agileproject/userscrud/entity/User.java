@@ -23,10 +23,14 @@ public class User {
     @Column(name="email")
     private @Getter @Setter String email;
 
-    public User(String firstName, String lastName, String email) {
+    @Column(name="password")
+    private @Getter @Setter String password;
+
+    public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
     }
 
 

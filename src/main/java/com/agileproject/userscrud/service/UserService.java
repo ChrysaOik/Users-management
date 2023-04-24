@@ -1,5 +1,6 @@
 package com.agileproject.userscrud.service;
 
+import com.agileproject.userscrud.dto.UserDTO;
 import com.agileproject.userscrud.entity.User;
 
 import java.util.List;
@@ -8,9 +9,9 @@ import java.util.UUID;
 
 public interface UserService {
 
-    public List<User> findAll();
+    List<UserDTO> findAll();
 
-    Optional<User> findById(UUID theId);
+    Optional<UserDTO> findById(UUID theId);
 
     User save(User user);
 

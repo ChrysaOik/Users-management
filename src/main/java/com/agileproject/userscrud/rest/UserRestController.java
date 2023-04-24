@@ -1,5 +1,6 @@
 package com.agileproject.userscrud.rest;
 
+import com.agileproject.userscrud.dto.UserDTO;
 import com.agileproject.userscrud.entity.User;
 import com.agileproject.userscrud.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -18,14 +19,14 @@ public class UserRestController {
         this.userService = userService;
     }
     @GetMapping("/users")
-    public List<User> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return userService.findAll();
     }
 
     @GetMapping("/users/{userId}")
-    public Optional<User> getUser(@PathVariable UUID userId) {
+    public Optional<UserDTO> getUser(@PathVariable UUID userId) {
         System.out.println(userId);
-        Optional<User> user = userService.findById(userId); //psaxnw ton xristi apo to id
+        Optional<UserDTO> user = userService.findById(userId); //psaxnw ton xristi apo to id
 
         return user;
     }
