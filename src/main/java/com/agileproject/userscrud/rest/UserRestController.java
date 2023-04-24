@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
@@ -22,7 +23,8 @@ public class UserRestController {
     }
 
     @GetMapping("/users/{userId}")
-    public Optional<User> getUser(@PathVariable int userId) {
+    public Optional<User> getUser(@PathVariable UUID userId) {
+        System.out.println(userId);
         Optional<User> user = userService.findById(userId); //psaxnw ton xristi apo to id
 
         return user;
@@ -30,14 +32,14 @@ public class UserRestController {
 
     @PostMapping("/users")
     public User addUser(@RequestBody User newUser) {
-        newUser.setId(0); //thetw to id se 0 gia na ginei to create kai oxi update
+        //newUser.setId(0); //thetw to id se 0 gia na ginei to create kai oxi update
 
         User dbUser = userService.save(newUser);
         return dbUser;
     }
 
     @DeleteMapping("/users/{userId}")
-    public String deleteUser(@PathVariable int userId) {
+    public String deleteUser(@PathVariable UUID userId) {
         userService.deleteById(userId);
 
         return "Deleted user with id: " + userId;

@@ -1,72 +1,33 @@
 package com.agileproject.userscrud.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.UUID;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity
 @Table(name="user")
 public class User {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.UUID)
     @Column(name="id")
-    private int id;
+    private @Getter @Setter UUID id;
     @Column(name="first_name")
-    private String firstName;
+    private @Getter @Setter String firstName;
     @Column(name="last_name")
-    private String lastName;
+    private @Getter @Setter String lastName;
     @Column(name="email")
-    private String email;
+    private @Getter @Setter String email;
 
-    public User() {
-    }
-
-    public User( String firstName, String lastName, String email) {
+    public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

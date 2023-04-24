@@ -10,9 +10,9 @@ public interface UserService {
 
     public List<User> findAll();
 
-    Optional<User> findById(int theId);
+    Optional<User> findById(UUID theId);
 
     User save(User user);
 
-    void deleteById(int id);
+    void deleteById(UUID id);
 }
