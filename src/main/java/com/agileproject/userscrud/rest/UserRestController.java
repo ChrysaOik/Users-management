@@ -3,6 +3,8 @@ package com.agileproject.userscrud.rest;
 import com.agileproject.userscrud.dto.UserDTO;
 import com.agileproject.userscrud.entity.User;
 import com.agileproject.userscrud.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +27,6 @@ public class UserRestController {
 
     @GetMapping("/users/{userId}")
     public Optional<UserDTO> getUser(@PathVariable UUID userId) {
-        System.out.println(userId);
         Optional<UserDTO> user = userService.findById(userId); //psaxnw ton xristi apo to id
 
         return user;
@@ -52,5 +53,6 @@ public class UserRestController {
 
         return dbUser; //epistrefei ton kainourgio xristi-ananewmeno
     }
+
 
 }
