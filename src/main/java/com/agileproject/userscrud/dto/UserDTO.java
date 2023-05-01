@@ -8,7 +8,7 @@ import java.util.UUID;
 
 
 //I add only the fields that I want to display to the client
-public record UserDTO(
+public record UserDTO( //focused on holding data, rather than behavior
         UUID id,
         String firstName,
         String lastName,

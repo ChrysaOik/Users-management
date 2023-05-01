@@ -22,7 +22,6 @@ public class User {
     private @Getter @Setter String lastName;
     @Column(name="email")
     private @Getter @Setter String email;
-
     @Column(name="password")
     private @Getter @Setter String password;
 
