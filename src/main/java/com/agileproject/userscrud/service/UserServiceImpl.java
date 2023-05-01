@@ -6,7 +6,9 @@ import com.agileproject.userscrud.dto.UserRequest;
 import com.agileproject.userscrud.entity.User;
 import com.agileproject.userscrud.mapper.UserMapper;
 import com.agileproject.userscrud.rest.UserNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -46,7 +48,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserDTO save(UserRequest userRequest) {
+    public UserDTO save(@Valid UserRequest userRequest) {
         User user = new User();
         user.setFirstName(userRequest.firstName());
         user.setLastName(userRequest.lastName());

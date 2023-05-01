@@ -5,6 +5,7 @@ import com.agileproject.userscrud.dto.UserRequest;
 import com.agileproject.userscrud.dto.UserResponse;
 import com.agileproject.userscrud.entity.User;
 import com.agileproject.userscrud.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +42,7 @@ public class UserRestController {
     }
 
     @PostMapping("")
-    public ResponseEntity<UserResponse> addUser(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<UserResponse> addUser(@Valid @RequestBody UserRequest userRequest) {
         //newUser.setId(0); //thetw to id se 0 gia na ginei to create kai oxi update
         UserDTO userDTO = userService.save(userRequest);
         UserResponse userResponse = new UserResponse(userDTO.id(), userDTO.firstName(), userDTO.lastName(), userDTO.email());
