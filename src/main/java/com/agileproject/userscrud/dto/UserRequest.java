@@ -1,6 +1,11 @@
 package com.agileproject.userscrud.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.UUID;
+
+
 
 public record UserRequest(
         UUID id,

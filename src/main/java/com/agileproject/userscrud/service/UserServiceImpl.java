@@ -7,6 +7,7 @@ import com.agileproject.userscrud.entity.User;
 import com.agileproject.userscrud.mapper.UserMapper;
 import com.agileproject.userscrud.rest.UserNotFoundException;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
     private final UserMapper userMapper;
 
+    @Autowired
     public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;

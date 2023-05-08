@@ -29,7 +29,7 @@ public class User {
     @Size(max = 100, message = "Last name can be up to 100 characters long")
     private @Getter @Setter String lastName;
     @Column(name="email")
-    @Size(max = 100, message = "Email can be up to 100 characters long")
+    @Size(max = 50, message = "Email can be up to 50 characters long")
     @Email(message = "Email should be valid")
     @NotBlank(message = "Email is mandatory")
 
