@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
     private final UserMapper userMapper;
 
+
     @Autowired
     public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
@@ -34,6 +35,7 @@ public class UserServiceImpl implements UserService{
         return userRepository.findAll()
                 .stream()
                 .map(u -> new UserDTO(u.getId(),
+
                         u.getFirstName(),
                         u.getLastName(),
                         u.getEmail()) )

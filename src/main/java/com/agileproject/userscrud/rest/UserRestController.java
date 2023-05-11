@@ -5,6 +5,11 @@ import com.agileproject.userscrud.dto.UserRequest;
 import com.agileproject.userscrud.dto.UserResponse;
 import com.agileproject.userscrud.entity.User;
 import com.agileproject.userscrud.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +21,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/v1/users")
 public class UserRestController {
 
     private UserService userService; //using service instead of dao
@@ -24,6 +29,12 @@ public class UserRestController {
     public UserRestController(UserService userService) {
         this.userService = userService;
     }
+
+    @Operation(summary = "Returns a greeting")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserService.class))) })
     @GetMapping("")
     public ResponseEntity<List<UserResponse>> getAllUsers() {
         List<UserDTO> userDTOs= userService.findAll(); //returns a list of userDTOs from service layer
