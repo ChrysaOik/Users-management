@@ -32,7 +32,6 @@ public class UserControllerTest {
 
     @Test
     public void testGetAllUsers() {
-        // Arrange
         List<UserDTO> userDTOs = new ArrayList<>();
         UUID uuid1 = UUID.randomUUID();
         UUID uuid2 = UUID.randomUUID();
@@ -40,10 +39,8 @@ public class UserControllerTest {
         userDTOs.add(new UserDTO(uuid2, "Dalia", "Xatz", "dalia@gmail.com"));
         when(userService.findAll()).thenReturn(userDTOs);
 
-        // Act
         ResponseEntity<List<UserResponse>> response = userController.getAllUsers();
 
-        // Assert
         assertEquals(HttpStatus.OK, response.getStatusCode());
         List<UserResponse> userResponses = response.getBody();
         assertEquals(2, userResponses.size());
