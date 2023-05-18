@@ -30,7 +30,7 @@ public class UserRestController {
         this.userService = userService;
     }
 
-    @Operation(summary = "Returns a greeting")
+    @Operation(summary = "Returns a list of all users")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK",
                     content = @Content(mediaType = "application/json",
@@ -44,6 +44,7 @@ public class UserRestController {
         return ResponseEntity.ok(userResponses);
     }
 
+    @Operation(summary = "Retrieves a user based on the provided userId")
     @GetMapping("/{userId}")
     public ResponseEntity<UserResponse> getUser(@PathVariable UUID userId) {
         UserDTO user = userService.findById(userId); //psaxnw ton xristi apo to id
@@ -52,6 +53,7 @@ public class UserRestController {
         return ResponseEntity.ok(userResponse);
     }
 
+    @Operation(summary = "Adds a new user based on the provided UserRequest")
     @PostMapping("")
     public ResponseEntity<UserResponse> addUser(@Valid @RequestBody UserRequest userRequest) {
         //newUser.setId(0); //thetw to id se 0 gia na ginei to create kai oxi update
@@ -60,6 +62,7 @@ public class UserRestController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userResponse);
     }
 
+    @Operation(summary = "Deletes a user based on the provided userId")
     @DeleteMapping("/{userId}")
     public String deleteUser(@PathVariable UUID userId) {
         userService.deleteById(userId);
@@ -67,6 +70,7 @@ public class UserRestController {
         return "Deleted user with id: " + userId;
     }
 
+    @Operation(summary = "Updates an existing user based on the provided UserRequest")
     @PutMapping("")
     public ResponseEntity<UserResponse> updateUser(@RequestBody UserRequest userRequest) {
         UserDTO userDTO = userService.update(userRequest);
