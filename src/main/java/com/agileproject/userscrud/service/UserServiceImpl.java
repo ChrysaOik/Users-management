@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService{
 
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) { //constructor injection
         this.userRepository = userRepository;
         this.userMapper = userMapper;
     }
@@ -62,6 +62,7 @@ public class UserServiceImpl implements UserService{
         return new UserDTO(savedUser.getId(),savedUser.getFirstName(),savedUser.getLastName(), savedUser.getEmail());
     }
 
+    @Override
     public UserDTO update(UserRequest userRequest){
         User user = userRepository.findById(userRequest.id())
                 .orElseThrow(() -> new UserNotFoundException());

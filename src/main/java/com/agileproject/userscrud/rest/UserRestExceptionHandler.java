@@ -18,9 +18,9 @@ import java.util.List;
 import java.util.Map;
 
 @ControllerAdvice
-public class UserRestExceptionHandler {
+public class UserRestExceptionHandler { //handles errors and maps them to appropriate error responses
 
-    @ExceptionHandler
+    @ExceptionHandler //specifies the type of the exception
     ResponseEntity<UserErrorResponse> handleException(UserNotFoundException exc) {
         //create response
 
@@ -33,7 +33,7 @@ public class UserRestExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<UserErrorResponse> handleException(Exception exc) {
+    public ResponseEntity<UserErrorResponse> handleException(Exception exc) { //handles generic exceptions
 
         // create a UserErrorResponse
         UserErrorResponse error = new UserErrorResponse();
@@ -46,10 +46,10 @@ public class UserRestExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(TransactionSystemException.class)
+    @ExceptionHandler(TransactionSystemException.class) //type of exceptions
     public ResponseEntity<Object> handleTransactionException(TransactionSystemException ex) {
-        Throwable cause = ex.getRootCause();
-        if (cause instanceof ConstraintViolationException) {
+        Throwable cause = ex.getRootCause(); //checks root cause of the exception
+        if (cause instanceof ConstraintViolationException) { //if the cause is a constraint violation i.e. if any of the validations is being violated
             ConstraintViolationException constraintEx = (ConstraintViolationException) cause;
             List<String> errors = new ArrayList<>();
             constraintEx.getConstraintViolations().forEach(violation -> {

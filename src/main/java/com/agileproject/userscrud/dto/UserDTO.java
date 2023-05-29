@@ -13,6 +13,6 @@ public record UserDTO( //focused on holding data, rather than behavior
         String firstName,
         String lastName,
         String email
-) {
+) { //the record automatically generates a constructor, getters, equals, hashCode and toString
 
 }

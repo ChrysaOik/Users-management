@@ -19,13 +19,15 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringJUnitConfig
-@SpringBootTest
+@SpringBootTest //annotations for testing
 public class UserTests { //checking if the validation annotations in user class work correctly
 
 
     @Test
     public void testFirstNameNotBlank() {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        //validating objects against defined constraints
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory(); //interface that represents a factory for Validator instances,
+                                                                                //provides methods for validating objects against defined constraints
         Validator validator = factory.getValidator();
 
         User user = new User();
@@ -35,7 +37,7 @@ public class UserTests { //checking if the validation annotations in user class 
         user.setPassword("P4ssword!");
 
 
-        Set<ConstraintViolation<User>> violations = validator.validate(user);
+        Set<ConstraintViolation<User>> violations = validator.validate(user); //list of constraint violations, if any
         assertEquals(1, violations.size());
         assertEquals("First name is mandatory", violations.iterator().next().getMessage());
     }

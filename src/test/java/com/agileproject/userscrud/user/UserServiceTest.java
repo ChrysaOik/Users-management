@@ -24,14 +24,14 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.class) //initializes the class and its dependencies for mocking
 public class UserServiceTest {
 
     @Mock
-    private UserRepository userRepository;
+    private UserRepository userRepository; //create a mock object, stimulates the behavior of the object without having to create a real object
 
     @InjectMocks
-    private UserServiceImpl userServiceImpl;
+    private UserServiceImpl userServiceImpl; //inject mocks in UserServiceImpl
 
     @Test
     public void testFindAll() {

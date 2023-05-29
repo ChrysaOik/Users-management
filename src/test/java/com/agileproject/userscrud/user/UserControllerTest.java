@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class UserControllerTest {
 
-    @Mock //creating a mock ?
+    @Mock //creating a mock 
     private UserService userService;
 
     @InjectMocks //inject the mock into the controller

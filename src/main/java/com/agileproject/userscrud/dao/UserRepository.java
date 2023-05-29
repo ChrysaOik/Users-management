@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, UUID> { //provides all crud operations
+public interface UserRepository extends JpaRepository<User, UUID> { //provides all crud operations, manages User objects
 
 }

@@ -12,7 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Entity
+@Entity //map to the database table
 @Table(name="user")
 public class User {
 

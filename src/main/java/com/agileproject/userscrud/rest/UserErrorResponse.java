@@ -10,7 +10,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserErrorResponse {
+public class UserErrorResponse { //encapsulates error information and send error response
 
     private @Getter @Setter int status;
     private @Getter @Setter String message;

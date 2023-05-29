@@ -31,12 +31,8 @@ public class UserRestController {
     }
 
     @Operation(summary = "Returns a list of all users")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK",
-                    content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserService.class))) })
     @GetMapping("")
-    public ResponseEntity<List<UserResponse>> getAllUsers() {
+    public ResponseEntity<List<UserResponse>> getAllUsers() { //customized HTTP response, including headers, status code and response body
         List<UserDTO> userDTOs= userService.findAll(); //returns a list of userDTOs from service layer
         List<UserResponse> userResponses = userDTOs.stream()
                 .map(u -> new UserResponse(u.id(), u.firstName(), u.lastName(), u.email()))
@@ -56,10 +52,9 @@ public class UserRestController {
     @Operation(summary = "Adds a new user based on the provided UserRequest")
     @PostMapping("")
     public ResponseEntity<UserResponse> addUser(@Valid @RequestBody UserRequest userRequest) {
-        //newUser.setId(0); //thetw to id se 0 gia na ginei to create kai oxi update
         UserDTO userDTO = userService.save(userRequest);
         UserResponse userResponse = new UserResponse(userDTO.id(), userDTO.firstName(), userDTO.lastName(), userDTO.email());
-        return ResponseEntity.status(HttpStatus.CREATED).body(userResponse);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userResponse); //201 created
     }
 
     @Operation(summary = "Deletes a user based on the provided userId")

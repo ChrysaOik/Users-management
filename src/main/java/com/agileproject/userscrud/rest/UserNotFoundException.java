@@ -5,6 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 
-public class UserNotFoundException extends RuntimeException {
+public class UserNotFoundException extends RuntimeException { //custom exception
 
 }
